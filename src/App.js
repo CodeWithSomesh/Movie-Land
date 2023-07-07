@@ -7,27 +7,35 @@ import MovieCards from "./MovieCards";
 
 export default function App () {
 
+    //Initialize Variables 
     const API_url = "https://www.omdbapi.com?apikey=cb0c7f0f";
-
     const [movieObjects, setMovieObjects] = useState([])
+    const [searchTerm, setSearchTerm] = useState('');
 
+    //Fetch API using Async Await 
+    const fetchMovies = async (title) => {
+      const res = await fetch(`${API_url}&s=${title}`);
+      const data = await res.json();
 
+      const movieList = data.Search;
+      console.log(movieList)
+      setMovieObjects(movieList);
+    }
+
+    //Fetch API using useEffect
     useEffect(() => {
-
-      const fetchMovies = async (title) => {
-        const res = await fetch(`${API_url}&s=${title}`);
-        const data = await res.json();
-
-        const movieList = data.Search;
-        console.log(movieList)
-        setMovieObjects(movieList);
-      }
 
       fetchMovies("batman")  //Gotta callback cuz using Async Await 
 
     }, [])
 
+    //Function to update Form Input 
+    function updateInput (prevTerm) {
+      setSearchTerm(prevTerm.target.value)
+    }
 
+
+  // Return JSX 
   return (
   
       <div className="app">
@@ -37,14 +45,14 @@ export default function App () {
         <div className="search">
           <input 
             placeholder="Search Movie Name"
-            value=""
-            onChange={() => {}}>
+            value={searchTerm}
+            onChange={updateInput}>
           </input>
 
           <img 
             src={SearchIcon}
             alt="search"
-            onClick={() => {}}>
+            onClick={() => fetchMovies(searchTerm)}>
             </img>
         </div>
 
