@@ -18,14 +18,13 @@ export default function App () {
       const data = await res.json();
 
       const movieList = data.Search;
-      console.log(movieList)
       setMovieObjects(movieList);
     }
 
     //Fetch API using useEffect
     useEffect(() => {
 
-      fetchMovies("batman")  //Gotta callback cuz using Async Await 
+      fetchMovies("pokemon")  
 
     }, [])
 
