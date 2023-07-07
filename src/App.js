@@ -1,27 +1,65 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import './App.css';
+import SearchIcon from "./search.svg";
 
 
 
 export default function App () {
 
-  
     const API_url = "https://www.omdbapi.com?apikey=cb0c7f0f";
+
+    [movieObjects, setMovieObjects] = useState([])
+
 
     useEffect(() => {
 
-      const fetchMovies = async () => {
-        const res = await fetch(API_url);
+      const fetchMovies = async (title) => {
+        const res = await fetch(`${API_url}&s=${title}`);
         const data = await res.json();
+
+        const movieList = data.Search;
+        console.log(movieList)
+        setMovieObjects(movieList);
       }
 
-    })
+      fetchMovies()  //Gotta callback cuz using Async Await 
+
+    }, [])
 
 
   return (
-    <main>
-      Body 
-    </main>
+  
+      <div className="app">
+
+        <h1>Movie Land</h1>
+
+        <div className="search">
+          <input 
+            placeholder="Search Movie Name"
+            value=""
+            onChange={() => {}}>
+          </input>
+
+          <img 
+            src={SearchIcon}
+            alt="search"
+            onClick={() => {}}>
+            </img>
+        </div>
+
+        {
+
+        }
+
+      </div>
+
+    
   )
+
+
+
+
+
+
 
 }
