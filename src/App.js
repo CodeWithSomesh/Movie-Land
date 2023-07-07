@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import './App.css';
 import SearchIcon from "./search.svg";
+import MovieCards from "./MovieCards";
 
 
 
@@ -8,7 +9,7 @@ export default function App () {
 
     const API_url = "https://www.omdbapi.com?apikey=cb0c7f0f";
 
-    [movieObjects, setMovieObjects] = useState([])
+    const [movieObjects, setMovieObjects] = useState([])
 
 
     useEffect(() => {
@@ -22,7 +23,7 @@ export default function App () {
         setMovieObjects(movieList);
       }
 
-      fetchMovies()  //Gotta callback cuz using Async Await 
+      fetchMovies("batman")  //Gotta callback cuz using Async Await 
 
     }, [])
 
@@ -47,19 +48,18 @@ export default function App () {
             </img>
         </div>
 
-        {
-
-        }
+        {movieObjects.length > 0 ? (
+          <div className="container">
+            {movieObjects.map((movies) => (<MovieCards movies={movies} key={movies.imdbID} />))}
+          </div>) :(
+          <div className="empty">
+            <h2>No Movies Found</h2>
+          </div>
+          )}
 
       </div>
 
     
   )
-
-
-
-
-
-
 
 }

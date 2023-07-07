@@ -4,17 +4,17 @@ export default function MovieCards(props) {
 
     return (
         <div className='movie'>
-            <div>
-                <p>{props.Year}</p>
+            <div className='movieYear'>
+                <p>{props.movies.Year}</p>
             </div>
 
-            <div>
-                <img src={props.Poster !== "N/A" ? props.Poster : "https://via.placeholder.com/400"} alt={props.Title} />
+            <div className='moviePoster'>
+                <img src={props.movies.Poster !== "N/A" ? props.movies.Poster : "https://via.placeholder.com/400"} alt={props.Title} />
             </div>
 
-            <div>
-                <span>{props.Type}</span>
-                <h3>{props.Title}</h3>
+            <div className='movieDetails'>
+                <span>{props.movies.Type}</span>
+                <h3>{props.movies.Title}</h3>
             </div>
         </div>
     )
