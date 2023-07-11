@@ -4,7 +4,9 @@ Link: https://movie-land-react-website.netlify.app/
 <br>
 
 ## Movie Land (First React Project)
-// Include Preview/ Pic
+![image](https://github.com/CodeWithSomesh/Movie-Land/assets/123357802/4e94b59c-ab61-4d6c-b1ec-7996c7a16a57)
+(Reacord a Vid)
+
 
 
 <br>
