@@ -13,7 +13,7 @@ Link: https://movie-land-react-website.netlify.app/
 
 
 #### Note:
-> Built using HTML, CSS, JavaScript & React 
+> Built using HTML, CSS, JavaScript & React & HTML5
 > 
 > Implemented React Props as well as React Hooks such as useState and useEffect
 > 
